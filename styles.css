@@ -15,8 +15,11 @@
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
-    font-family: open+sans; width: 300;
+    font-family: 'Montserrat', sans-serif;
 };
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
 
 input:not([type="radio"]):not([type="checkbox"]), button {
     appearance: none;
