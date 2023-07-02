@@ -1,116 +1,56 @@
-window.addEventListener('load', () => {
-    todos JSON.parse(localStorage.getItem('todos')) || [];
-    const nameInput = document.querySelector('#name');
-    const newTodoForm = document.querySelector('#new-todo-form');
+const listaTareasDiv = document.getElementById("lista-tareas")
+const crearTareaInput = document.getElementById("crear-tarea")
 
-    const username = localStorage.getItem('username') || [];
-
-    nameInput.value = username;
-
-    nameInput.addEventListener('chage', e => {
-        localStorage.setItem('username', e.target.value);
-    })
-
-    newTodoForm.addEventListener('summit', e => {
-        e.preventDafault();
-    
-        const todo = {
-            content: e.target.element.content.value,
-            category: e.target.element.category.value,
-            done: false,
-            createdAt: new Date().getTime()   
-        }
-        todos.push(todo);
-
-        localStorage.setItem('todos',JSON.stringify(todos));
-    
-        e.target.reset();
-        
-        DisplayTodos();
-    })
-
-    DisplayTodos();
-
-})
- 
-function DisplayTodos() {
-    const todoList = document.querySelector('#todo-list');
-
-    todoList.innerHTML = '';
-
-    todos.forEach(todo => {
-        const todoItem = document.createElement('div');
-        todoItem.classList.add('todo-item')
-
-        const label = document.createElement('label');
-        const input = document.createElement('input');
-        const span = document.createElement('span');
-        const content = document.createElement('div');
-        const actions = document.createElement('div');
-        const edit = document.createElement('button');
-        const deleteButton = document.createElement('button');
-
-        input.type ='checkbox';
-        input.checked = todo.done;
-        span.classList.add('bubble');
-
-        if (todo.category == 'personal') {
-            span.classList.add('personal');
-        } else {
-            span.classList.add('business');
-        }
-
-        content.classList.add('todo-conten');
-        actions.classList.add('actions');
-        edit.classList.add('edit');
-        deleteButton.classList.add('delete');
-
-        content.innerHTML = `<input type="text" value="${todo.content}"readonly>`;
-        edit.innerHTML = 'Edit';
-        deleteButton.innerHTML = 'Delete';
-
-        label.appendChild(input);
-        label.appendChild(span);
-        actions.appendChild(edit);
-        actions.appendChild(deleteButton);
-        todoItem.appendChild(todoItem);
-        todoItem.appendChild(content);
-        todoItem.appendChild(actions);
-
-        todoList.appendChild(todoItem);
-
-        if (todo.done) {
-            todoItem.classList.add('done');           
-        }
-        input.addEventListener('click', e => {
-            todo.done = e.target.checked;
-            localStorage.setItem('todos', JSON. stringify(todos));
-
-            if (todo.done) {
-                todoItem.classList.add('done');    
-            } else {
-                todoItem.classList.remove('done');
-            }
-
-            DisplayTodos();
-        })
-
-        edit.addEventListener('click', e => {
-            const input = content.querySelector('input');
-            input.removeAttribute('readonly');
-            input.focus();
-            input.addEventListener('blur', e => {
-                input.setAttribute('randonly', true);
-                todo.content = e.target.value;
-                localStorage.setItem('todos', JSON.stringify(todos));
-                DisplayTodos();
-            })
-        })
-
-        deleteButton.addEventListener('click', e => {
-            todos = todos.filter(t => t !=todo);
-            localStorage.setItem('todos', JSON.stringify(todos));
-            DisplayTodos();
-        })
-    });
+if (!localStorage.getItem("id")) {
+    localStorage.setItem("id","0")  
 }
+let id = parseInt(localStorage.getItem("id"))
+
+function crearTarea() {
+    id++
+    localStorage.setItem("id",id)
+    let tarea = crearTareaInput.value  
+    localStorage.setItem(id,tarea)
+    mostrarTareas()
+}
+
+function mostrarTareas() {
+    let tareas = "";
+  
+    for (let i = id; i >= 1; i--) {
+      const valor = localStorage.getItem(i.toString());
+  
+      if (valor !== null) {
+        tareas +=` 
+            <div>
+                <input type="checkbox">
+              <p>${valor}</p>
+              <button onclick="borrar('${i.toString()}')">Borrar</button>
+              <button onclick="editar('${i.toString()}')">Editar</button>
+            </div>`
+          ;
+      }
+    }
+  
+    listaTareasDiv.innerHTML = tareas;
+  }
+  
+function editar(id) {
+    tareaModificada = crearTareaInput.value
+    localStorage.setItem(id,tareaModificada)
+    mostrarTareas()
+}
+
+function borrarTodo() {
+    localStorage.clear()
+    mostrarTareas()
+}
+
+function borrar(id) {
+    localStorage.removeItem(id)
+    mostrarTareas()
+}
+
+mostrarTareas()
+  
+
