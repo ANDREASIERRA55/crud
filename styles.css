@@ -1,7 +1,43 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* BASIC CSS */
 body {
-    background-color: brown;
+  background-color: rgb(37, 98, 98);
+}
+.contenedor {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  background-image: url("starsfont.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50%;
+  height: 200px;
+}
+h1 {
+  align-items: center;
+  padding-inline-end: 10px;
+  color: blue;
+  top: 50%;
+  left: 50%;
 }
 
 #lista-tareas div {
-    display: flex;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  gap: 20px;
+  color: rosybrown;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#crear-tarea div {
+  display: flex;
+  justify-content: center;
+  color: brown;
 }

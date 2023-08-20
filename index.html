@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div>
-        <input id="crear-tarea" type="text" placeholder="Tarea">
-        <button onclick="crearTarea()">Aceptar</button> 
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="content">
+      <img src="starsfont.jpg" alt="MY PRIMER CRUD" />
+      <h1>MY PRIMER CRUD</h1>
+      <div>
+        <input id="crear-tarea" type="text" placeholder="Tarea" />
+        <button onclick="crearTarea()">Aceptar</button>
+      </div>
+      <div id="lista-tareas"></div>
+      <button onclick="borrarTodo()">Borrar todo</button>
     </div>
-    <div id="lista-tareas">
-        
-    </div>
-    <button onclick="borrarTodo()">Borrar todo</button> 
-        
     <script src="main.js"></script>
-
-</body>
+  </body>
 </html>
