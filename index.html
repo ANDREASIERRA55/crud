@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="content">
-      <img src="starsfont.jpg" alt="MY PRIMER CRUD" />
-      <h1>MY PRIMER CRUD</h1>
-      <div>
-        <input id="crear-tarea" type="text" placeholder="Tarea" />
-        <button onclick="crearTarea()">Aceptar</button>
+    <div class="crud-container">
+      <div class="content">
+        <h1>MI PRIMER CRUD</h1>
+        <div class="crear tarea">
+          <input id="crear-tarea" type="text" placeholder="Tarea" />
+          <button onclick="crearTarea()">Aceptar</button>
+        </div>
+        <div id="lista-tareas"></div>
+        <button onclick="borrarTodo()">Borrar todo</button>
       </div>
-      <div id="lista-tareas"></div>
-      <button onclick="borrarTodo()">Borrar todo</button>
     </div>
+
     <script src="main.js"></script>
   </body>
 </html>
